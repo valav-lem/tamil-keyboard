@@ -1,15 +1,6 @@
 # Yazhi Tamil Keyboard (Thozhan)
 
-An open-source Tamil keyboard reimagined with Tholkappiam (PM0100) principles.
-
-## Philosophy: PM0100 Unit Pairs
-
-Instead of traditional layouts (QWERTY-phonetic or Tamil99), we are designing a layout based on the phonological units defined in Tholkappiam.
-
-**Core Concept:** Sounds are grouped in natural pairs or units:
-- A (அ) / Aa (ஆ)
-- E (இ) / Ee (ஈ)
-- U (உ) / Uu (ஊ)
+An open-source Tamil keyboard reimagined with **Tholkappiam (PM0100)** principles. Unlike traditional phonetic (QWERTY) or Tamil99 layouts, Yazhi is designed around the natural phonological units and grammatical rules defined in the ancient Tamil grammar text, Tholkappiam.
 
 ## Keyboard Layout (Tholkappiam PM0100)
 
@@ -30,6 +21,15 @@ Here is a visual representation of the core layout based on the PM0100 principle
 | க | ச | ட | த | ப | ற |
 | ங | ஞ | ண | ந | ம | ன |
 | ய | ர | ல | வ | ழ | ள |
+
+## Philosophy: The Tholkappiam Connection
+
+Tholkappiam categorizes Tamil letters based on their articulation and sound duration (*Maatthirai*). Yazhi leverages these ancient linguistic rules to create a highly intuitive and ergonomic typing experience.
+
+**Core Concepts:**
+- **Unit Pairs (Kuril & Nedil):** Vowels are grouped in natural short/long pairs (e.g., அ/ஆ, இ/ஈ, உ/ஊ). The default layer contains short vowels, while the shift layer holds their long counterparts.
+- **Consonant Grouping (Vallinam, Mellinam, Idayinam):** Consonants are logically arranged based on their phonetic classes (Hard, Soft, and Medial sounds) rather than arbitrary alphabetical order.
+- **Syllabic Flow:** The layout encourages a typing flow that mirrors the natural construction of Tamil syllables (Uyir + Mei = Uyirmei).
 
 ## Goals
 - Intuitive typing flow based on sound duration (Maatthirai) and relationship.
