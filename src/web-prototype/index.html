@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazhi Tamil Keyboard Prototype</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#333333">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Yazhi Tamil Keyboard by yThozhar</h1>
+        <p>Tholkappiam (PM0100) Layout Prototype <span id="status-indicator" style="font-size: 0.8em; color: green;">(Online)</span></p>
+        
+        <div class="suggestion-bar" id="suggestion-bar">
+            <!-- Suggestions will appear here -->
+        </div>
+
+        <div class="editor-toolbar">
+            <button onclick="clearText()" class="toolbar-btn" title="Clear Text">🗑️ Clear</button>
+            <button onclick="copyText()" class="toolbar-btn" title="Copy to Clipboard">📋 Copy</button>
+        </div>
+
+        <div class="typewriter-container">
+            <div class="line-numbers" id="line-numbers">1</div>
+            <textarea id="output" placeholder="இங்கே தட்டச்சு செய்யவும்..." spellcheck="false" oninput="updateLineNumbers()" onscroll="syncScroll()"></textarea>
+        </div>
+        
+        <div class="keyboard" id="keyboard">
+            <!-- Keyboard rows will be generated here by JS -->
+        </div>
+    </div>
+
+    <script src="keyboard.js"></script>
+    <script>
+        // Register Service Worker for Offline Support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, (err) => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // Update online/offline status
+        const statusIndicator = document.getElementById('status-indicator');
+        window.addEventListener('online', () => {
+            statusIndicator.textContent = '(Online)';
+            statusIndicator.style.color = 'green';
+        });
+        window.addEventListener('offline', () => {
+            statusIndicator.textContent = '(Offline - Local Processing)';
+            statusIndicator.style.color = 'orange';
+        });
+        if (!navigator.onLine) {
+            statusIndicator.textContent = '(Offline - Local Processing)';
+            statusIndicator.style.color = 'orange';
+        }
+    </script>
+</body>
+</html>
