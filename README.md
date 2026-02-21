@@ -37,8 +37,23 @@ Here is a visual representation of the core layout based on the PM0100 principle
 - Privacy-focused (local processing).
 
 ## Roadmap
-1. [ ] Define the full layout spec (Vowels, Consonants, Grantha).
-2. [ ] Prototype a web-based testing ground (with offline caching).
-3. [ ] Build keymap configuration.
-4. [ ] Integrate Adhan (Local Processing & Prediction Engine).
-5. [ ] Package for target OS (Android/iOS/Linux).
+
+```mermaid
+flowchart LR
+    A([1. Layout Spec]) --> B([2. Web Prototype])
+    B --> C([3. Keymap Config])
+    C --> D([4. Adhan Engine])
+    D --> E([5. OS Packaging])
+    
+    style A fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
+    style B fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
+    style C fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
+    style D fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
+    style E fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
+```
+
+1. [ ] **Define the full layout spec** (Vowels, Consonants, Grantha).
+2. [ ] **Prototype a web-based testing ground** (with offline caching).
+3. [ ] **Build keymap configuration**.
+4. [ ] **Integrate Adhan** (Local Processing & Prediction Engine).
+5. [ ] **Package for target OS** (Android/iOS/Linux).
