@@ -2,7 +2,9 @@
 <html lang="ta">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Yazhi Tamil Keyboard Prototype</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#333333">
@@ -22,6 +24,11 @@
             <button onclick="copyText()" class="toolbar-btn" title="Copy to Clipboard">📋 Copy</button>
         </div>
 
+        <div class="meta-bar">
+            <span class="meta-pill" id="layout-mode">Mode: Tamil</span>
+            <span class="meta-pill" id="typing-stats">Chars: 0 | Words: 0 | Lines: 1</span>
+        </div>
+
         <div class="typewriter-container">
             <div class="line-numbers" id="line-numbers">1</div>
             <textarea id="output" placeholder="இங்கே தட்டச்சு செய்யவும்..." spellcheck="false" oninput="updateLineNumbers()" onscroll="syncScroll()"></textarea>
@@ -30,6 +37,8 @@
         <div class="keyboard" id="keyboard">
             <!-- Keyboard rows will be generated here by JS -->
         </div>
+
+        <div class="toast" id="toast" aria-live="polite"></div>
     </div>
 
     <script src="keyboard.js"></script>

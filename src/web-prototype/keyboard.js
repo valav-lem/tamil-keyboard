@@ -48,9 +48,37 @@ let isGrantha = false;
 const output = document.getElementById('output');
 const keyboardContainer = document.getElementById('keyboard');
 const suggestionBar = document.getElementById('suggestion-bar');
+const layoutModeLabel = document.getElementById('layout-mode');
+const typingStatsLabel = document.getElementById('typing-stats');
+const toast = document.getElementById('toast');
 
 // Mock dictionary for suggestions
 const mockDictionary = ["அம்மா", "அப்பா", "தமிழ்", "வணக்கம்", "யாம்", "கீபோர்டு", "தொல்காப்பியம்"];
+
+function showToast(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 1400);
+}
+
+function updateMetaBar() {
+    if (layoutModeLabel) {
+        const mode = isGrantha ? 'Grantha' : (isShift ? 'Tamil Shift' : 'Tamil');
+        layoutModeLabel.textContent = `Mode: ${mode}`;
+    }
+
+    if (typingStatsLabel) {
+        const text = output.value;
+        const chars = text.length;
+        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+        const lines = text.split('\n').length;
+        typingStatsLabel.textContent = `Chars: ${chars} | Words: ${words} | Lines: ${lines}`;
+    }
+}
 
 function renderKeyboard() {
     keyboardContainer.innerHTML = '';
@@ -253,6 +281,7 @@ function renderKeyboard() {
     // Append the arrow cluster and main keys to the keyboard container
     keyboardContainer.appendChild(arrowCluster);
     keyboardContainer.appendChild(mainKeysContainer);
+    updateMetaBar();
 }
 
 function updateSuggestions() {
@@ -262,19 +291,32 @@ function updateSuggestions() {
 
     if (currentWord.length > 0) {
         const matches = mockDictionary.filter(w => w.startsWith(currentWord));
-        matches.forEach(match => {
-            const chip = document.createElement('div');
-            chip.className = 'suggestion-chip';
-            chip.textContent = match;
-            chip.onclick = () => {
-                // Replace current word with suggestion
-                const newText = output.value.substring(0, output.value.length - currentWord.length) + match + ' ';
-                output.value = newText;
-                saveText();
-                updateSuggestions();
-            };
-            suggestionBar.appendChild(chip);
-        });
+        if (matches.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'suggestion-empty';
+            empty.textContent = 'No suggestions';
+            suggestionBar.appendChild(empty);
+        } else {
+            matches.forEach(match => {
+                const chip = document.createElement('div');
+                chip.className = 'suggestion-chip';
+                chip.textContent = match;
+                chip.onclick = () => {
+                    const newText = output.value.substring(0, output.value.length - currentWord.length) + match + ' ';
+                    output.value = newText;
+                    saveText();
+                    updateSuggestions();
+                    updateLineNumbers();
+                    updateMetaBar();
+                };
+                suggestionBar.appendChild(chip);
+            });
+        }
+    } else {
+        const hint = document.createElement('div');
+        hint.className = 'suggestion-empty';
+        hint.textContent = 'Type to see suggestions';
+        suggestionBar.appendChild(hint);
     }
 }
 
@@ -369,6 +411,7 @@ function handleKeyPress(char) {
                 saveText();
                 updateSuggestions();
                 updateLineNumbers();
+                updateMetaBar();
                 output.focus();
                 return;
             }
@@ -381,6 +424,7 @@ function handleKeyPress(char) {
     saveText();
     updateSuggestions();
     updateLineNumbers();
+    updateMetaBar();
     output.focus();
 }
 
@@ -415,6 +459,7 @@ function handleBackspace() {
     saveText();
     updateSuggestions();
     updateLineNumbers();
+    updateMetaBar();
     output.focus();
 }
 
@@ -424,24 +469,31 @@ function clearText() {
         saveText();
         updateSuggestions();
         updateLineNumbers();
+        updateMetaBar();
         output.focus();
+        showToast('Cleared');
     }
 }
 
-function copyText() {
-    output.select();
-    document.execCommand('copy');
-    output.setSelectionRange(output.value.length, output.value.length);
-    output.focus();
-    
-    // Optional: Show a brief "Copied!" message
-    const copyBtn = document.querySelector('button[title="Copy to Clipboard"]');
-    if (copyBtn) {
-        const originalText = copyBtn.innerHTML;
-        copyBtn.innerHTML = '✅ Copied!';
-        setTimeout(() => {
-            copyBtn.innerHTML = originalText;
-        }, 2000);
+async function copyText() {
+    const text = output.value;
+    if (!text) {
+        showToast('Nothing to copy');
+        return;
+    }
+
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+        } else {
+            output.select();
+            document.execCommand('copy');
+            output.setSelectionRange(output.value.length, output.value.length);
+            output.focus();
+        }
+        showToast('Copied to clipboard');
+    } catch (_) {
+        showToast('Copy failed');
     }
 }
 
@@ -450,13 +502,78 @@ function saveText() {
     localStorage.setItem('yazhi_draft', output.value);
 }
 
+// Delete word before cursor (for Ctrl+Backspace)
+function deleteWord() {
+    const currentText = output.value;
+    const cursorPos = output.selectionStart;
+    
+    if (cursorPos === 0) return;
+    
+    const textBefore = currentText.substring(0, cursorPos);
+    const textAfter = currentText.substring(cursorPos);
+    
+    // Find the start of the word (whitespace or beginning)
+    let wordStart = textBefore.length - 1;
+    
+    // Skip trailing whitespace
+    while (wordStart >= 0 && textBefore[wordStart] === ' ') {
+        wordStart--;
+    }
+    
+    // Find the beginning of the word
+    while (wordStart >= 0 && textBefore[wordStart] !== ' ') {
+        wordStart--;
+    }
+    
+    wordStart++; // Move past the space or to 0
+    
+    const newTextBefore = textBefore.substring(0, wordStart);
+    output.value = newTextBefore + textAfter;
+    output.setSelectionRange(newTextBefore.length, newTextBefore.length);
+    saveText();
+    updateSuggestions();
+    updateLineNumbers();
+    updateMetaBar();
+    output.focus();
+}
+
+// Select first suggestion (for Tab key)
+function selectFirstSuggestion() {
+    const suggestions = document.querySelectorAll('.suggestion-chip');
+    if (suggestions.length > 0) {
+        suggestions[0].click();
+        return true;
+    }
+    return false;
+}
+
+// Keyboard shortcuts handler
+output.addEventListener('keydown', (e) => {
+    // Ctrl+Backspace to delete word
+    if (e.ctrlKey && e.key === 'Backspace') {
+        e.preventDefault();
+        deleteWord();
+    }
+    
+    // Tab to select first suggestion
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const selected = selectFirstSuggestion();
+        if (!selected) {
+            // If no suggestions, insert a space (default Tab behavior)
+            handleKeyPress(' ');
+        }
+    }
+});
+
 window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('yazhi_draft');
     if (saved) {
         output.value = saved;
-        updateSuggestions();
-        updateLineNumbers();
     }
+    updateSuggestions();
+    updateLineNumbers();
+    updateMetaBar();
 });
 
 // Initial render
