@@ -1,6 +1,6 @@
-# Yazhi Tamil Keyboard (Thozhan)
+# Illakiya (Tamil Keyboard)
 
-An open-source Tamil keyboard reimagined with **Tholkappiam (PM0100)** principles. Unlike traditional phonetic (QWERTY) or Tamil99 layouts, Yazhi is designed around the natural phonological units and grammatical rules defined in the ancient Tamil grammar text, Tholkappiam.
+An open-source Tamil keyboard reimagined with **Tholkappiam (PM0100)** principles. Unlike traditional phonetic (QWERTY) or Tamil99 layouts, Illakiya is designed around the natural phonological units and grammatical rules defined in the ancient Tamil grammar text, Tholkappiam.
 
 ## Keyboard Layout (Tholkappiam PM0100)
 
@@ -24,7 +24,7 @@ Here is a visual representation of the core layout based on the PM0100 principle
 
 ## Philosophy: The Tholkappiam Connection
 
-Tholkappiam categorizes Tamil letters based on their articulation and sound duration (*Maatthirai*). Yazhi leverages these ancient linguistic rules to create a highly intuitive and ergonomic typing experience.
+Tholkappiam categorizes Tamil letters based on their articulation and sound duration (*Maatthirai*). Illakiya leverages these ancient linguistic rules to create a highly intuitive and ergonomic typing experience.
 
 **Core Concepts:**
 - **Unit Pairs (Kuril & Nedil):** Vowels are grouped in natural short/long pairs (e.g., அ/ஆ, இ/ஈ, உ/ஊ). The default layer contains short vowels, while the shift layer holds their long counterparts.
