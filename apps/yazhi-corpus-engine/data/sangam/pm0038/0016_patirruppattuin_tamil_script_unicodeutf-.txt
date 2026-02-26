@@ -1,0 +1,11 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 16
+Author: K. Kalyanasundaram
+Song Number: 16
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+பெயர் - நிரைய வெள்ளம் (4)
+துறை - செந்துறைப் பாடாண்பாட்டு
+தூக்கு - செந்தூக்கு
+வண்ணம் - ஒழுகு வண்ணம்
+பாட்டு -

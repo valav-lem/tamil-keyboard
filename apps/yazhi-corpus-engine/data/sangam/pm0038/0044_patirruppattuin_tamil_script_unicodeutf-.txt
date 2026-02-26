@@ -1,0 +1,12 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 44
+Author: K. Kalyanasundaram
+Song Number: 44
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+வண்கை வேந்தேநின் கலிமகி ழானே.
+துறை: இயன்மொழிவாழ்த்து
+வண்ணம்: ஒழுகு வண்ணம்
+தூக்கு: செந்தூக்கு
+பெயர்: ஏறாவேணி
+பாட்டு -

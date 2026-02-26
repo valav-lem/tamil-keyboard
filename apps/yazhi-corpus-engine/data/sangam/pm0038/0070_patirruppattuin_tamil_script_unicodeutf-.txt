@@ -1,0 +1,13 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 70
+Author: K. Kalyanasundaram
+Song Number: 70
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+நால்வேறு நனம்தலை ஓராங்கு நந்த
+இலங்குகதிர்த் திகிரி முந்திசி னோரே.
+துறை: வஞ்சித்துறைப் பாடாண்பாட்டு
+வண்ணம்: ஒழுகு வண்ணமும் சொற்சீர்வண்ணமும்
+தூக்கு: செந்தூக்கும் வஞ்சித்தூக்கும்
+பெயர்: மண்கெழுஞாலம்
+பாட்டு -

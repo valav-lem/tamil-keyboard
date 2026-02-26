@@ -1,0 +1,11 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 10
+Author: K. Kalyanasundaram
+Song Number: 10
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+வேறுபுலத்(து) இறுத்த விறல்வெந் தானையொடு
+மாறா மைந்தர் மாறு நிலைதேய
+மைந்துமலி ஊக்கத்த கந்துகால் கீழ்ந்து
+கடாஅ யானை முழங்கும்
+இடாஅ ஏணிநின் பாசறை யானே.

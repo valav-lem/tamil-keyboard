@@ -1,0 +1,12 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 73
+Author: K. Kalyanasundaram
+Song Number: 73
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+சினம்கெழு குருசில்நின் உடற்றிசி னோர்க்கே.
+துறை: செந்துறைப் பாடாண்பாட்டு
+வண்ணம்: ஒழுகு வண்ணம்
+தூக்கு: செந்தூக்கு
+பெயர்: உருத்(து)எழு வெள்ளம்
+பாட்டு -

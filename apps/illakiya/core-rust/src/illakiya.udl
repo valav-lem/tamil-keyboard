@@ -1,0 +1,50 @@
+namespace illakiya {
+    // Version
+};
+
+[Object]
+interface KeyboardEngine {
+    constructor();
+    
+    // Core input
+    string process_input(string key);
+    void toggle_nedil();
+    string accept_suggestion(string suggestion);
+    
+    // State queries
+    string get_buffer();
+    string? get_pending();
+    string get_current_word();
+    boolean is_nedil_active();
+    
+    // Dictionary integration
+    sequence<string> get_suggestions(u32 limit);
+    boolean is_valid_word(string word);
+    string? translate_current();
+    u32 dictionary_size();
+    
+    // Sandhi
+    string? get_sandhi_suggestion();
+    
+    // Control
+    void reset();
+};
+
+[Object]
+interface AdhanSandhi {
+    constructor();
+    string check_punarchi(string word1, string word2);
+    void record_correction(string word1, string word2, string expected);
+    u32 get_corrections_count();
+};
+
+[Object]
+interface Dictionary {
+    constructor();
+    boolean contains(string word);
+    sequence<string> suggest(string prefix, u32 limit);
+    string? translate(string word);
+    string? transliterate(string word);
+    void record_usage(string word);
+    u32 word_count();
+};

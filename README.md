@@ -1,59 +1,38 @@
-# Illakiya (Tamil Keyboard)
+# Yazhi — யழி
 
-An open-source Tamil keyboard reimagined with **Tholkappiam (PM0100)** principles. Unlike traditional phonetic (QWERTY) or Tamil99 layouts, Illakiya is designed around the natural phonological units and grammatical rules defined in the ancient Tamil grammar text, Tholkappiam.
+**Open source Tamil-first software ecosystem.**
 
-## Keyboard Layout (Tholkappiam PM0100)
+## Projects
 
-Here is a visual representation of the core layout based on the PM0100 principles:
+### 🎹 [Illakiya](/apps/illakiya/) — Tamil Keyboard
+Native Android keyboard with Rust core engine. PM0100 phonetic layout, 836-word dictionary mined from Sangam literature, 6 Tholkaappiyam Sandhi rules.  
+**Stack:** Kotlin + Rust + UniFFI
 
-### Default Layer (Base)
-|   |   |   |   |   |   |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| அ | இ | உ | எ | ஒ | ஐ |
-| க் | ச் | ட் | த் | ப் | ற் |
-| ங் | ஞ் | ண் | ந் | ம் | ன் |
-| ய் | ர் | ல் | வ் | ழ் | ள் |
+### 🔐 [Yazhi Auth](/apps/yazhi-auth/) — Unified Authentication
+Phone/OAuth auth service with security-first architecture.  
+**Stack:** Rust (planned)
 
-### Shift Layer (Long Vowels & Consonants)
-|   |   |   |   |   |   |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| ஆ | ஈ | ஊ | ஏ | ஓ | ஔ |
-| க | ச | ட | த | ப | ற |
-| ங | ஞ | ண | ந | ம | ன |
-| ய | ர | ல | வ | ழ | ள |
+### 📱 [Yazh](/apps/yazh/) — Social App
+Tamil-first social platform.  
+**Stack:** Rust
 
-## Philosophy: The Tholkappiam Connection
+### 📚 [Yazhi Corpus Engine](/apps/yazhi-corpus-engine/) — Data Pipeline
+Multilingual corpus ingestion from Project Madurai and other Tamil literary sources.  
+**Stack:** Python
 
-Tholkappiam categorizes Tamil letters based on their articulation and sound duration (*Maatthirai*). Illakiya leverages these ancient linguistic rules to create a highly intuitive and ergonomic typing experience.
+### 🤖 [Adhan](/models/aadhan/) — Tamil LLM
+XLM-RoBERTa-based Tamil language model. 1,220 training samples ready.  
+**Stack:** Python + PyTorch
 
-**Core Concepts:**
-- **Unit Pairs (Kuril & Nedil):** Vowels are grouped in natural short/long pairs (e.g., அ/ஆ, இ/ஈ, உ/ஊ). The default layer contains short vowels, while the shift layer holds their long counterparts.
-- **Consonant Grouping (Vallinam, Mellinam, Idayinam):** Consonants are logically arranged based on their phonetic classes (Hard, Soft, and Medial sounds) rather than arbitrary alphabetical order.
-- **Syllabic Flow:** The layout encourages a typing flow that mirrors the natural construction of Tamil syllables (Uyir + Mei = Uyirmei).
+---
 
-## Goals
-- Intuitive typing flow based on sound duration (Maatthirai) and relationship.
-- Support for modern platforms (Mobile/Web/Desktop).
-- Privacy-focused (local processing).
+## Philosophy
 
-## Roadmap
+- **FLOSS First** — All code open source
+- **Tamil First** — Native language support, not afterthought
+- **Privacy by Default** — User data stays with user
+- **Solidarity Pricing** — Free for individuals, fair for orgs
 
-```mermaid
-flowchart LR
-    A([1. Layout Spec]) --> B([2. Web Prototype])
-    B --> C([3. Keymap Config])
-    C --> D([4. Adhan Engine])
-    D --> E([5. OS Packaging])
-    
-    style A fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
-    style B fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
-    style C fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
-    style D fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
-    style E fill:#f9f2f4,stroke:#d39eaf,stroke-width:2px,color:#333
-```
+---
 
-1. [ ] **Define the full layout spec** (Vowels, Consonants, Grantha).
-2. [ ] **Prototype a web-based testing ground** (with offline caching).
-3. [ ] **Build keymap configuration**.
-4. [ ] **Integrate Adhan** (Local Processing & Prediction Engine).
-5. [ ] **Package for target OS** (Android/iOS/Linux).
+*யாதும் ஊரே யாவரும் கேளிர் — Every place is our home, every person our kin.*

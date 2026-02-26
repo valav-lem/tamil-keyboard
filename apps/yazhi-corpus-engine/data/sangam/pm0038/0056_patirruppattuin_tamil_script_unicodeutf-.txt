@@ -1,0 +1,12 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 56
+Author: K. Kalyanasundaram
+Song Number: 56
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+ஓங்கல் உள்ளத்துக் குருசில்நின் நாளே.
+துறை: செந்துறைப்பாடாண்பாட்டு
+வண்ணம்: ஒழுகு வண்ணம்
+தூக்கு: செந்தூக்கு
+பெயர்: துஞ்சும் பந்தர்
+பாட்டு -

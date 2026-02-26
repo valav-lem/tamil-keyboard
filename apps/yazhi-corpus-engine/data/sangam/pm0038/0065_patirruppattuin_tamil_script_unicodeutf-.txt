@@ -1,0 +1,11 @@
+PM Code: pm0038
+patiRRuppattuin Tamil script, unicode/utf-8 format - Song 65
+Author: K. Kalyanasundaram
+Song Number: 65
+Source: https://www.projectmadurai.org/pm_etexts/utf8/pmuni0038.html
+
+துறை: காட்சிவாழ்த்து
+வண்ணம்: ஒழுகு வண்ணம்
+தூக்கு: செந்தூக்கு
+பெயர்: உரைசால்வேள்வி
+பாட்டு -
